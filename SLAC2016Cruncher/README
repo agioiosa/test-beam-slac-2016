@@ -1,4 +1,4 @@
-Based on framework powered by Kim Siang Khaw (UW) (https://github.com/kimsiang/SLAC2016) and classes of Bedeschi/Bartolini (INFN) (https://github.com/gm2-it/test-beam-frascati-feb16)
+Based on framework powered by Kim Siang Khaw (UW) (https://github.com/kimsiang/SLAC2016) and classes of Stefano Mastroianni (INFN NA)
 
 To use this standalone C++/ROOT cruncher framework created for SLAC 2016, simply git clone the whole repository:
 
