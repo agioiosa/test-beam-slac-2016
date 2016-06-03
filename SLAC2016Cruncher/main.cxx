@@ -2,9 +2,10 @@
 #include <fstream>
 #include <string>
 #include "TString.h"
-#include "SLAC2016Cruncher.h"
 #include <TCanvas.h>
 #include <cstdlib>
+
+#include "SLAC2016Cruncher.h"
 
 int main (int argc, char **argv) {
 
@@ -31,7 +32,7 @@ int main (int argc, char **argv) {
 
 
     for(unsigned int j=1;j<size;j++){
-        TChain *chain = new TChain ("t");
+        TChain *chain = new TChain ("ntMonFrame");
          TString fname;
         if (argc > 1)
         {

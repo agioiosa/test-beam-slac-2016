@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Thu May 26 18:16:12 2016 by ROOT version 6.06/04
-// from TTree t/t
-// found on file: frascatirun_00254.root
+// Wed Jun  1 23:23:02 2016 by ROOT version 6.06/04
+// from TTree ntMonFrame/MonitorFrame
+// found on file: Run10_2016531235610_all.root
 //////////////////////////////////////////////////////////
 
 #ifndef EventCollection_h
@@ -25,12 +25,42 @@ public :
 // Fixed size dimensions of array or collections stored in the TTree if any.
 
    // Declaration of leaf types
-   ULong64_t       caen_5742_system_clock;
-   ULong64_t       caen_5742_device_clock[18];
-   UShort_t        caen_5742_trace[18][1024];
+   Int_t           ErrorCode;
+   Int_t           frameloc;
+   Int_t           NBOF;
+   Int_t           NTimeBOF;
+   Int_t           NtrgBOF;
+   Int_t           PulseType;
+   Int_t           BoardAdr;
+   Int_t           ChBoard;
+   Int_t           boardTemp;
+   Int_t           cspTemp;
+   Int_t           extTemp;
+   Int_t           Vbias;
+   Int_t           ADCVal;
+   Int_t           t_year;
+   Int_t           t_mon;
+   Int_t           t_day;
+   Int_t           t_secday;
 
    // List of branches
-   TBranch        *b_caen_5742;   //!
+   TBranch        *b_ErrorCode;   //!
+   TBranch        *b_frameloc;   //!
+   TBranch        *b_NBOF;   //!
+   TBranch        *b_NTimeBOF;   //!
+   TBranch        *b_NtrgBOF;   //!
+   TBranch        *b_PulseType;   //!
+   TBranch        *b_BoardAdr;   //!
+   TBranch        *b_ChBoard;   //!
+   TBranch        *b_boardTemp;   //!
+   TBranch        *b_cspTemp;   //!
+   TBranch        *b_extTemp;   //!
+   TBranch        *b_Vbias;   //!
+   TBranch        *b_ADCVal;   //!
+   TBranch        *b_t_year;   //!
+   TBranch        *b_t_mon;   //!
+   TBranch        *b_t_day;   //!
+   TBranch        *b_t_secday;   //!
 
    EventCollection(TTree *tree=0);
    virtual ~EventCollection();
@@ -51,11 +81,11 @@ EventCollection::EventCollection(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("frascatirun_01095.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("Run10_2016531235610_all.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("frascatirun_01095.root");
+         f = new TFile("Run10_2016531235610_all.root");
       }
-      f->GetObject("t",tree);
+      f->GetObject("ntMonFrame",tree);
 
    }
    Init(tree);
@@ -102,7 +132,23 @@ void EventCollection::Init(TTree *tree)
    fCurrent = -1;
    fChain->SetMakeClass(1);
 
-   fChain->SetBranchAddress("caen_5742", &caen_5742_system_clock, &b_caen_5742);
+   fChain->SetBranchAddress("ErrorCode", &ErrorCode, &b_ErrorCode);
+   fChain->SetBranchAddress("frameloc", &frameloc, &b_frameloc);
+   fChain->SetBranchAddress("NBOF", &NBOF, &b_NBOF);
+   fChain->SetBranchAddress("NTimeBOF", &NTimeBOF, &b_NTimeBOF);
+   fChain->SetBranchAddress("NtrgBOF", &NtrgBOF, &b_NtrgBOF);
+   fChain->SetBranchAddress("PulseType", &PulseType, &b_PulseType);
+   fChain->SetBranchAddress("BoardAdr", &BoardAdr, &b_BoardAdr);
+   fChain->SetBranchAddress("ChBoard", &ChBoard, &b_ChBoard);
+   fChain->SetBranchAddress("boardTemp", &boardTemp, &b_boardTemp);
+   fChain->SetBranchAddress("cspTemp", &cspTemp, &b_cspTemp);
+   fChain->SetBranchAddress("extTemp", &extTemp, &b_extTemp);
+   fChain->SetBranchAddress("Vbias", &Vbias, &b_Vbias);
+   fChain->SetBranchAddress("ADCVal", &ADCVal, &b_ADCVal);
+   fChain->SetBranchAddress("t_year", &t_year, &b_t_year);
+   fChain->SetBranchAddress("t_mon", &t_mon, &b_t_mon);
+   fChain->SetBranchAddress("t_day", &t_day, &b_t_day);
+   fChain->SetBranchAddress("t_secday", &t_secday, &b_t_secday);
    Notify();
 }
 

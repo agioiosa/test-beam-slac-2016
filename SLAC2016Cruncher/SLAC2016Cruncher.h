@@ -2,7 +2,6 @@
 #define SLAC2016Ana_h
 
 #include "EventCollection.h"
-#include "TBconfig.h"
 #include "TBmakeNTP.h"
 #include <stdio.h>
 #include "TH1D.h"
@@ -23,14 +22,6 @@ class SLAC2016Cruncher : public EventCollection {
 
  private:
   TBmakeNTP *ntple;
-  TBconfig *ch;
   TTree *tNTP;
-  Int_t nrun;
-
-  Int_t NTr;
-  Int_t *TrCh;
-  Int_t TrLen;
-  Double_t Ltime;
-  char *p;
 };
 #endif

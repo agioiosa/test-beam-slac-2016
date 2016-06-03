@@ -1,6 +1,6 @@
 EXENAME = crunch
 
-OBJS = main.o SLAC2016Cruncher.o EventCollection.o TBconfig.o TBtrace.o TBmakeNTP.o
+OBJS = main.o SLAC2016Cruncher.o EventCollection.o TBmakeNTP.o
 
 AR            = g++
 CXX           = g++ 
