@@ -1,6 +1,5 @@
 #include "TString.h"
 #include "TFile.h"
-#include "TTree.h"
 #include "TH1.h"
 #include "TH2.h"
 #include "TMath.h"
@@ -42,7 +41,7 @@ void TBmakeNTP::NTPreset()
 }
 
 //
-void TBmakeNTP::NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeBOF,	Int_t NtrgBOF,
+void TBmakeNTP::NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeTrgBOF,	Int_t NtrgBOF,
 		Int_t BoardAdr, Int_t boardTemp, Int_t cspTemp, Int_t extTemp,
 		Int_t Vbias, Int_t ADCVal, Int_t PulseType, Int_t t_year, Int_t t_mon,
 		Int_t t_day, Int_t t_secday)
@@ -54,7 +53,7 @@ void TBmakeNTP::NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeBOF,	Int_t NtrgBOF
 	case 10:
 		{
 			pmt.NBOF = NBOF;
-			pmt.NTimeBOF = NTimeBOF;
+			pmt.NTimeTrgBOF = NTimeTrgBOF;
 			pmt.NtrgBOF = NtrgBOF;
 			pmt.BoardAdr = BoardAdr;
 			pmt.boardTemp = boardTemp;
@@ -72,7 +71,7 @@ void TBmakeNTP::NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeBOF,	Int_t NtrgBOF
 	case 11:
 		{
 			pin1.NBOF = NBOF;
-			pin1.NTimeBOF = NTimeBOF;
+			pin1.NTimeTrgBOF = NTimeTrgBOF;
 			pin1.NtrgBOF = NtrgBOF;
 			pin1.BoardAdr = BoardAdr;
 			pin1.boardTemp = boardTemp;
@@ -90,7 +89,7 @@ void TBmakeNTP::NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeBOF,	Int_t NtrgBOF
 	case 12:
 		{
 			pin2.NBOF = NBOF;
-			pin2.NTimeBOF = NTimeBOF;
+			pin2.NTimeTrgBOF = NTimeTrgBOF;
 			pin2.NtrgBOF = NtrgBOF;
 			pin2.BoardAdr = BoardAdr;
 			pin2.boardTemp = boardTemp;
@@ -114,9 +113,9 @@ TTree *TBmakeNTP::NTPsetup()
 {
 	TTree *tNTP = new TTree(ftID,ftTitle);
 
-	tNTP->Branch("pmt",&pmt,  "NBOF/I:NTimeBOF/I:NtrgBOF/I:BoardAdr/I:boardTemp/I:cspTemp/I:extTemp/I:Vbias/I:ADCVal/I:PulseType/I:t_year/I:t_mon/I:t_day/I:t_secday/I");
-	tNTP->Branch("pin1",&pin1,"NBOF/I:NTimeBOF/I:NtrgBOF/I:BoardAdr/I:boardTemp/I:cspTemp/I:extTemp/I:Vbias/I:ADCVal/I:PulseType/I:t_year/I:t_mon/I:t_day/I:t_secday/I");
-	tNTP->Branch("pin2",&pin2,"NBOF/I:NTimeBOF/I:NtrgBOF/I:BoardAdr/I:boardTemp/I:cspTemp/I:extTemp/I:Vbias/I:ADCVal/I:PulseType/I:t_year/I:t_mon/I:t_day/I:t_secday/I");
+	tNTP->Branch("pmt",&pmt,  "NBOF/I:NTimeTrgBOF/I:NtrgBOF/I:BoardAdr/I:boardTemp/I:cspTemp/I:extTemp/I:Vbias/I:ADCVal/I:PulseType/I:t_year/I:t_mon/I:t_day/I:t_secday/I");
+	tNTP->Branch("pin1",&pin1,"NBOF/I:NTimeTrgBOF/I:NtrgBOF/I:BoardAdr/I:boardTemp/I:cspTemp/I:extTemp/I:Vbias/I:ADCVal/I:PulseType/I:t_year/I:t_mon/I:t_day/I:t_secday/I");
+	tNTP->Branch("pin2",&pin2,"NBOF/I:NTimeTrgBOF/I:NtrgBOF/I:BoardAdr/I:boardTemp/I:cspTemp/I:extTemp/I:Vbias/I:ADCVal/I:PulseType/I:t_year/I:t_mon/I:t_day/I:t_secday/I");
 
 	return tNTP;
 }

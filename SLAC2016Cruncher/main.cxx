@@ -32,7 +32,6 @@ int main (int argc, char **argv) {
 
 
     for(unsigned int j=1;j<size;j++){
-        TChain *chain = new TChain ("ntMonFrame");
          TString fname;
         if (argc > 1)
         {
@@ -47,7 +46,6 @@ int main (int argc, char **argv) {
             {
                 i++;
                 if(i==j){
-                    chain->Add (fname);
                     temp[i] = fname;
                     int n = temp[i].rfind ("/"); // find the position in string of the last "/"
                     temp[i].erase (0, n + 1);	// erase substring in front of it including itself
@@ -60,14 +58,14 @@ int main (int argc, char **argv) {
             cerr << "no input file" << endl;
             exit (1);
         }
-        SLAC2016Cruncher crunch(chain);
+        SLAC2016Cruncher crunch(temp[j]);
 
         cout <<"###################################################################"<< endl;
         cout <<"##    Current file is : "<< temp[j] << "   ##"<<endl; // print the input rootfile name
         cout <<"###################################################################"<< endl;
 
-        crunch.Loop(temp[j]);
-        crunch.~EventCollection();
+        crunch.Loop();
+        crunch.~SLAC2016Cruncher();
     }
 
     return 0;

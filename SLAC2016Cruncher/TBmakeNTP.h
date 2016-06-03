@@ -1,6 +1,8 @@
 #ifndef G__TBMAKENTP_H
 #define G__TBMAKENTP_H
 
+#include "TTree.h"
+
 
 class TBmakeNTP{
 
@@ -33,7 +35,7 @@ class TBmakeNTP{
 private:
 	typedef struct {
 		Int_t NBOF;
-		Int_t NTimeBOF;
+		Int_t NTimeTrgBOF;
 		Int_t NtrgBOF;
 		Int_t BoardAdr;
 		Int_t boardTemp;
@@ -72,7 +74,7 @@ public:
 	//
 	// Generic NTP filling routine
 	//void NTPfill(Int_t ChBoard,Int_t BoardAdr, Double_t boardTemp, Double_t cspTemp, Double_t extTemp, Double_t Vbias, Double_t ADCVal, Int_t PulseType, Double_t refTime);
-	void NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeBOF,	Int_t NtrgBOF,
+	void NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeTrgBOF,	Int_t NtrgBOF,
 			Int_t BoardAdr, Int_t boardTemp, Int_t cspTemp, Int_t extTemp,
 			Int_t Vbias, Int_t ADCVal, Int_t PulseType, Int_t t_year, Int_t t_mon,
 			Int_t t_day, Int_t t_secday);

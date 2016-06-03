@@ -1,35 +1,24 @@
 #include "SLAC2016Cruncher.h"
+#include "TFile.h"
 
 #include <iostream>
 //#include <unistd.h>
 
-void SLAC2016Cruncher::Loop(string &filename){
-    cout << "Loop()" << endl;
+void SLAC2016Cruncher::Loop(){
+	cout << "Loop()" << endl;
 
-    initialize(filename);
+	initialize();
 
-    if (fChain == 0) return;
+	clear();
+	execute();
 
-    Long64_t nentries = fChain->GetEntries();
-    cout<< nentries<<endl;
-    Int_t nbytes = 0, nb = 0;
-    for (Long64_t jentry=0; jentry<nentries;jentry++) {
-        Long64_t ientry = LoadTree(jentry);
-        if (ientry < 0) break;
-        nb = fChain->GetEntry(jentry);   nbytes += nb;
-
-        clear();
-        execute();
-
-    }
-
-    finalize(filename);
+	finalize();
 }
 
-void SLAC2016Cruncher::initialize(string &filename){
+void SLAC2016Cruncher::initialize(){
 
 	// prepare NTple tree
-	char tID[10]    = "tNTP";		// tree ID
+	char tID[50]    = "ntMonFrame";		// tree ID
 	char tTitle[50] = "DAQ data";	// Tree title
 	ntple  = new TBmakeNTP(tID,tTitle);		// Create class
 	tNTP = ntple->NTPsetup();
@@ -38,31 +27,73 @@ void SLAC2016Cruncher::initialize(string &filename){
 }
 
 void SLAC2016Cruncher::execute(){
-    //cout << "execute()" << endl;
-	if (ErrorCode == 0 && frameloc == 28){
+	//cout << "execute()" << endl;
 
-		ntple->NTPfill(ChBoard,NBOF,NTimeBOF,NtrgBOF,BoardAdr,
-				boardTemp,cspTemp,extTemp,Vbias,ADCVal,PulseType,
-				t_year,t_mon,t_day,t_secday);	// Fill NTPle arrays
-		tNTP->Fill();
+	FILE *fpIN=fopen(sfile,"r");
+
+	if (fpIN!=NULL)
+	{
+		int qq=1;
+		while (qq>0)
+		{
+			qq=fscanf(fpIN,"%d %d %d %d ",&t_year, &t_mon, &t_day, &t_secday);
+			cout << " frame " << " day " << t_day << " sec_day " << t_secday  << endl;
+			qq=fscanf(fpIN,"%d %d ",&ErrorCode, &frameloc);
+			if (ErrorCode==0)
+			{
+				qq=fscanf(fpIN,"%x %x %x %x %x %x %x %x %x\n",&NBOF, &NTimeTrgBOF, &NtrgBOF, &FlagType, &boardTemp, &cspTemp, &extTemp, &Vbias, &ADCVal);
+				printf("%x %x %x %x %x %x %x %x %x\n",NBOF, NTimeTrgBOF, NtrgBOF, FlagType, boardTemp, cspTemp, extTemp, Vbias, ADCVal);
+
+				BoardAdr= (FlagType&0x000F);
+				ChBoard=  (FlagType&0x00F0)>>4;
+				PulseType= (FlagType&0xFF00)>>8;
+
+				//fill ntuple
+				ntple->NTPfill(ChBoard,NBOF,NTimeTrgBOF,NtrgBOF,BoardAdr,
+						boardTemp,cspTemp,extTemp,Vbias,ADCVal,PulseType,
+						t_year,t_mon,t_day,t_secday);	// Fill NTPle arrays
+
+				tNTP->Fill();
+			}
+			else
+			{
+				printf("ErrorFrame: nloc %d\n",frameloc);
+				for (int ibyte=0;ibyte<frameloc;ibyte++)
+				{
+					qq=fscanf(fpIN,"%x ",&byteRD);
+					printf("loc %d byteRD %.2x \n",ibyte,byteRD);
+				}
+
+				qq=fscanf(fpIN,"\n");
+				qq=1;
+			}
+		} // if
+	}  // end if file
+	else {
+		printf("file NULL\n");
 	}
 }
 
-void SLAC2016Cruncher::finalize(string &filename){
+void SLAC2016Cruncher::finalize(){
 
 	// Write out TTree, close output file
 	// Prepare output file
-	char* cFile  = new char[100];
-	sprintf(cFile,"out_%s",filename.c_str());
-	TFile OutF(cFile,"recreate");
-	OutF.cd();
+	//==============================
+	// Output File
+	char output_ROOT[200], sTemp[200];
+	strcpy(output_ROOT,sfile);
+	sprintf(sTemp,".root");
+	strcat(output_ROOT,sTemp);
+	TFile *hfile = new TFile(output_ROOT,"RECREATE");
+	hfile->cd();
 	tNTP->Write();
-	OutF.Close();
+	hfile->Close();
 	//usleep(1000);
 	//delete ntple;
 	//delete tNTP;
+	delete hfile;
 
-    cout << "finalize()" << endl;
+	cout << "finalize()" << endl;
 }
 
 void SLAC2016Cruncher::clear(){

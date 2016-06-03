@@ -1,7 +1,6 @@
 #ifndef SLAC2016Ana_h
 #define SLAC2016Ana_h
 
-#include "EventCollection.h"
 #include "TBmakeNTP.h"
 #include <stdio.h>
 #include "TH1D.h"
@@ -10,18 +9,30 @@
 #include <iostream>
 #include <fstream>
 
-class SLAC2016Cruncher : public EventCollection {
+// Namespace
+using namespace std;
+
+class SLAC2016Cruncher {
  public:
-  SLAC2016Cruncher(TTree *tree=0):EventCollection(tree){};
+  SLAC2016Cruncher(string &filename) {
+		strcpy(sfile,filename.c_str());
+  };
   ~SLAC2016Cruncher() {};
-  virtual void Loop(string &filename);
-  void initialize(string &filename);
+  virtual void Loop();
+  void initialize();
   void execute();
-  void finalize(string &filename);
+  void finalize();
   void clear();
 
  private:
-  TBmakeNTP *ntple;
-  TTree *tNTP;
+  	int  NtrgBOF, NBOF, BoardAdr, ChBoard, PulseType, NTimeTrgBOF, FlagType;
+  	int  boardTemp, cspTemp, extTemp, Vbias, ADCVal;
+  	int t_year, t_mon, t_day, t_secday;
+  	int ErrorCode, frameloc;
+    int byteRD;
+    char sfile[200];
+
+	TBmakeNTP *ntple;
+	TTree *tNTP;
 };
 #endif
