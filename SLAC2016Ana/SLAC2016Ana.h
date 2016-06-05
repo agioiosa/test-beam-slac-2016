@@ -23,9 +23,63 @@ class SLAC2016Ana : public EventCollection {
 
 private:
   Long64_t nentries;
-
-  //histograms for LM analysis
-  TProfile *prof_pmt;
   Int_t iter;
+
+  Int_t *pmt_adcval;
+  Int_t *p1_adcval;
+  Int_t *p2_adcval;
+
+  Double_t *pmt_nbof;
+  Double_t *p1_nbof;
+  Double_t *p2_nbof;
+
+  Double_t *pmt_vbias;
+  Double_t *p1_vbias;
+  Double_t *p2_vbias;
+
+  Double_t *pmt_time;
+  Double_t *p1_time;
+  Double_t *p2_time;
+
+  Double_t *pmt_extemp;
+  Double_t *p1_extemp;
+  Double_t *p2_extemp;
+
+  Double_t *pmt_boardtemp;
+  Double_t *p1_boardtemp;
+  Double_t *p2_boardtemp;
+
+  Double_t *pmt_csptemp;
+  Double_t *p1_csptemp;
+  Double_t *p2_csptemp;
+
+  //histograms for analysis
+  TProfile *prof_pmt_adcval;
+  TProfile *prof_pin1_adcval;
+  TProfile *prof_pin2_adcval;
+
+  TProfile *prof_pmt_vbias;
+  TProfile *prof_pin1_vbias;
+  TProfile *prof_pin2_vbias;
+
+  TProfile *prof_pmt_extemp;
+  TProfile *prof_pin1_extemp;
+  TProfile *prof_pin2_extemp;
+
+  TProfile *prof_pmt_boardtemp;
+  TProfile *prof_pin1_boardtemp;
+  TProfile *prof_pin2_boardtemp;
+
+  TProfile *prof_pmt_csptemp;
+  TProfile *prof_pin1_csptemp;
+  TProfile *prof_pin2_csptemp;
+
+  TH2D *h2_pmt_nbof;
+  TH2D *h2_pin1_nbof;
+  TH2D *h2_pin2_nbof;
+
+  TH1D *h_pmt_adcval;
+  TH1D *h_pin1_adcval;
+  TH1D *h_pin2_adcval;
 };
 #endif

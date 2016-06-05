@@ -8,9 +8,7 @@
 
 int main (int argc, char **argv) {
 
-    TCanvas *mydummycanvas = new TCanvas(); 
-
-    string temp[100];
+	string temp[100];
     cout << "###############################################################" << endl;
     cout << "#####           Welcome to SLAC 2016 Analysis !           #####" << endl;
     cout << "###############################################################" << endl;
