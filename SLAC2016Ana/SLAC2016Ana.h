@@ -25,13 +25,17 @@ private:
   Long64_t nentries;
   Int_t iter;
 
-  Int_t *pmt_adcval;
-  Int_t *p1_adcval;
-  Int_t *p2_adcval;
+  Double_t *pmt_adcval;
+  Double_t *p1_adcval;
+  Double_t *p2_adcval;
 
   Double_t *pmt_nbof;
   Double_t *p1_nbof;
   Double_t *p2_nbof;
+
+  Double_t *pmt_ntimetrgbof;
+  Double_t *p1_ntimetrgbof;
+  Double_t *p2_ntimetrgbof;
 
   Double_t *pmt_vbias;
   Double_t *p1_vbias;
@@ -57,6 +61,7 @@ private:
   TProfile *prof_pmt_adcval;
   TProfile *prof_pin1_adcval;
   TProfile *prof_pin2_adcval;
+  TProfile *prof_pin1Dpin2_adcval;
 
   TProfile *prof_pmt_vbias;
   TProfile *prof_pin1_vbias;
@@ -77,6 +82,16 @@ private:
   TH2D *h2_pmt_nbof;
   TH2D *h2_pin1_nbof;
   TH2D *h2_pin2_nbof;
+
+  TH2D *h2_pin1Vpin2_adcval;
+
+  TH2D *h2_pmt_ntimetrgbof;
+  TH2D *h2_pin1_ntimetrgbof;
+  TH2D *h2_pin2_ntimetrgbof;
+
+  TH1D *h1_pmt_ntimetrgbof;
+  TH1D *h1_pin1_ntimetrgbof;
+  TH1D *h1_pin2_ntimetrgbof;
 
   TH1D *h_pmt_adcval;
   TH1D *h_pin1_adcval;
