@@ -27,9 +27,8 @@ int main (int argc, char **argv) {
         size++;
     } 
 
-
+    TChain *chain = new TChain ("ntMonFrame");
     for(unsigned int j=1;j<size;j++){
-        TChain *chain = new TChain ("ntMonFrame");
         TString fname;
         if (argc > 1)
         {
@@ -60,14 +59,17 @@ int main (int argc, char **argv) {
         cout <<"###################################################################"<< endl;
         cout <<"##    Current file is : "<< temp[j] << "   ##"<<endl; // print the input rootfile name
         cout <<"###################################################################"<< endl;
-        //SLAC2016Ana *ana = new SLAC2016Ana(chain);
-        SLAC2016Ana ana(chain);
 
-        //string f="out.root";
-        //ana->Loop(f);
-        ana.Loop(temp[j]);
-        //ana->~EventCollection();
-        //delete ana;
+        //SLAC2016Ana *ana = new SLAC2016Ana(chain);
+        //SLAC2016Ana ana(chain);
+        //ana.Loop(temp[j]);
     }
+
+    SLAC2016Ana ana(chain);
+    string f="out.root";
+    ana.Loop(f);
+    //ana->~EventCollection();
+    //delete ana;
+
     return 0;
 }
