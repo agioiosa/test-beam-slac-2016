@@ -39,6 +39,7 @@ public :
    Int_t           pmt_t_mon;
    Int_t           pmt_t_day;
    Int_t           pmt_t_secday;
+   Int_t           pmt_fired;
    Int_t           pin1_NBOF;
    Int_t           pin1_NTimeTrgBOF;
    Int_t           pin1_NtrgBOF;
@@ -53,6 +54,7 @@ public :
    Int_t           pin1_t_mon;
    Int_t           pin1_t_day;
    Int_t           pin1_t_secday;
+   Int_t           pin1_fired;
    Int_t           pin2_NBOF;
    Int_t           pin2_NTimeTrgBOF;
    Int_t           pin2_NtrgBOF;
@@ -67,6 +69,7 @@ public :
    Int_t           pin2_t_mon;
    Int_t           pin2_t_day;
    Int_t           pin2_t_secday;
+   Int_t           pin2_fired;
 
    // List of branches
    TBranch        *b_pmt;   //!

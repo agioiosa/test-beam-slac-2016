@@ -28,7 +28,6 @@ void SLAC2016Cruncher::initialize(){
 
 void SLAC2016Cruncher::execute(){
 	//cout << "execute()" << endl;
-
 	FILE *fpIN=fopen(sfile,"r");
 
 	if (fpIN!=NULL)
@@ -37,12 +36,12 @@ void SLAC2016Cruncher::execute(){
 		while (qq>0)
 		{
 			qq=fscanf(fpIN,"%d %d %d %d ",&t_year, &t_mon, &t_day, &t_secday);
-			cout << " frame " << " day " << t_day << " sec_day " << t_secday  << endl;
+			//cout << " frame " << " day " << t_day << " sec_day " << t_secday  << endl;
 			qq=fscanf(fpIN,"%d %d ",&ErrorCode, &frameloc);
 			if (ErrorCode==0)
 			{
 				qq=fscanf(fpIN,"%x %x %x %x %x %x %x %x %x\n",&NBOF, &NTimeTrgBOF, &NtrgBOF, &FlagType, &boardTemp, &cspTemp, &extTemp, &Vbias, &ADCVal);
-				printf("%x %x %x %x %x %x %x %x %x\n",NBOF, NTimeTrgBOF, NtrgBOF, FlagType, boardTemp, cspTemp, extTemp, Vbias, ADCVal);
+				//printf("%x %x %x %x %x %x %x %x %x\n",NBOF, NTimeTrgBOF, NtrgBOF, FlagType, boardTemp, cspTemp, extTemp, Vbias, ADCVal);
 
 				BoardAdr= (FlagType&0x000F);
 				ChBoard=  (FlagType&0x00F0)>>4;
@@ -89,8 +88,6 @@ void SLAC2016Cruncher::finalize(){
 	tNTP->Write();
 	hfile->Close();
 	//usleep(1000);
-	//delete ntple;
-	//delete tNTP;
 	delete hfile;
 
 	cout << "finalize()" << endl;

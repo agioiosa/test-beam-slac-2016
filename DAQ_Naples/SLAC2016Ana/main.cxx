@@ -29,9 +29,8 @@ int main (int argc, char **argv) {
 
 
     for(unsigned int j=1;j<size;j++){
-        //TChain *chain = new TChain ("slacAnalyzer/eventTree");
         TChain *chain = new TChain ("ntMonFrame");
-         TString fname;
+        TString fname;
         if (argc > 1)
         {
             ifstream fin (argv[1]);
@@ -58,16 +57,17 @@ int main (int argc, char **argv) {
             cerr << "no input file" << endl;
             exit (1);
         }
-        SLAC2016Ana *ana = new SLAC2016Ana(chain);
-
         cout <<"###################################################################"<< endl;
         cout <<"##    Current file is : "<< temp[j] << "   ##"<<endl; // print the input rootfile name
         cout <<"###################################################################"<< endl;
+        //SLAC2016Ana *ana = new SLAC2016Ana(chain);
+        SLAC2016Ana ana(chain);
 
-        ana->Loop(temp[j]);
-        ana->~EventCollection();
-        delete ana;
+        //string f="out.root";
+        //ana->Loop(f);
+        ana.Loop(temp[j]);
+        //ana->~EventCollection();
+        //delete ana;
     }
-
     return 0;
 }

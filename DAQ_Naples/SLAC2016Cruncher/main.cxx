@@ -9,7 +9,7 @@
 
 int main (int argc, char **argv) {
 
-    TCanvas *mydummycanvas = new TCanvas(); 
+    //TCanvas *mydummycanvas = new TCanvas();
 
     string temp[100];
     cout << "###############################################################" << endl;

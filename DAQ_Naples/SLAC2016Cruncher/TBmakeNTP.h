@@ -6,8 +6,6 @@
 
 class TBmakeNTP{
 
-	// NTPle building class for Frascati test beam.
-	//
 	// Example usage:
 	//
 	// TFile *f = new TFile("run345.root","recreate");
@@ -48,6 +46,7 @@ private:
 		Int_t t_mon;
 		Int_t t_day;
 		Int_t t_secday;
+		Int_t filler_flag;
 	} DEVICE;
 
 	char* ftID;					// Tree identifier

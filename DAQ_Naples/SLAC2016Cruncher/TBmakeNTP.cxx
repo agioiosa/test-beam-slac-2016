@@ -66,6 +66,39 @@ void TBmakeNTP::NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeTrgBOF,	Int_t Ntrg
 			pmt.t_mon = t_mon;
 			pmt.t_day = t_day;
 			pmt.t_secday = t_secday;
+			pmt.filler_flag = 1;
+
+			pin1.NBOF = 0;
+			pin1.NTimeTrgBOF =  0;
+			pin1.NtrgBOF =  0;
+			pin1.BoardAdr =  0;
+			pin1.boardTemp =  0;
+			pin1.cspTemp =  0;
+			pin1.extTemp =  0;
+			pin1.Vbias =  0;
+			pin1.ADCVal =  0;
+			pin1.PulseType =  0;
+			pin1.t_year =  0;
+			pin1.t_mon =  0;
+			pin1.t_day =  0;
+			pin1.t_secday =  0;
+			pin1.filler_flag = 0;
+
+			pin2.NBOF = 0;
+			pin2.NTimeTrgBOF = 0;
+			pin2.NtrgBOF = 0;
+			pin2.BoardAdr = 0;
+			pin2.boardTemp = 0;
+			pin2.cspTemp = 0;
+			pin2.extTemp = 0;
+			pin2.Vbias = 0;
+			pin2.ADCVal = 0;
+			pin2.PulseType = 0;
+			pin2.t_year = 0;
+			pin2.t_mon = 0;
+			pin2.t_day = 0;
+			pin2.t_secday = 0;
+			pin2.filler_flag = 1;
 			break;
 		}
 	case 11:
@@ -84,6 +117,39 @@ void TBmakeNTP::NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeTrgBOF,	Int_t Ntrg
 			pin1.t_mon = t_mon;
 			pin1.t_day = t_day;
 			pin1.t_secday = t_secday;
+			pin1.filler_flag = 1;
+
+			pmt.NBOF = 0;
+			pmt.NTimeTrgBOF = 0;
+			pmt.NtrgBOF = 0;
+			pmt.BoardAdr = 0;
+			pmt.boardTemp = 0;
+			pmt.cspTemp = 0;
+			pmt.extTemp = 0;
+			pmt.Vbias = 0;
+			pmt.ADCVal = 0;
+			pmt.PulseType = 0;
+			pmt.t_year = 0;
+			pmt.t_mon = 0;
+			pmt.t_day = 0;
+			pmt.t_secday = 0;
+			pmt.filler_flag = 0;
+
+			pin2.NBOF = 0;
+			pin2.NTimeTrgBOF = 0;
+			pin2.NtrgBOF = 0;
+			pin2.BoardAdr = 0;
+			pin2.boardTemp = 0;
+			pin2.cspTemp = 0;
+			pin2.extTemp = 0;
+			pin2.Vbias = 0;
+			pin2.ADCVal = 0;
+			pin2.PulseType = 0;
+			pin2.t_year = 0;
+			pin2.t_mon = 0;
+			pin2.t_day = 0;
+			pin2.t_secday = 0;
+			pin2.filler_flag = 0;
 			break;
 		}
 	case 12:
@@ -102,6 +168,39 @@ void TBmakeNTP::NTPfill(Int_t ChBoard, Int_t NBOF,	Int_t NTimeTrgBOF,	Int_t Ntrg
 			pin2.t_mon = t_mon;
 			pin2.t_day = t_day;
 			pin2.t_secday = t_secday;
+			pin2.filler_flag = 1;
+
+			pmt.NBOF = 0;
+			pmt.NTimeTrgBOF = 0;
+			pmt.NtrgBOF = 0;
+			pmt.BoardAdr = 0;
+			pmt.boardTemp = 0;
+			pmt.cspTemp = 0;
+			pmt.extTemp = 0;
+			pmt.Vbias = 0;
+			pmt.ADCVal = 0;
+			pmt.PulseType = 0;
+			pmt.t_year = 0;
+			pmt.t_mon = 0;
+			pmt.t_day = 0;
+			pmt.t_secday = 0;
+			pmt.filler_flag = 0;
+
+			pin1.NBOF = 0;
+			pin1.NTimeTrgBOF =  0;
+			pin1.NtrgBOF =  0;
+			pin1.BoardAdr =  0;
+			pin1.boardTemp =  0;
+			pin1.cspTemp =  0;
+			pin1.extTemp =  0;
+			pin1.Vbias =  0;
+			pin1.ADCVal =  0;
+			pin1.PulseType =  0;
+			pin1.t_year =  0;
+			pin1.t_mon =  0;
+			pin1.t_day =  0;
+			pin1.t_secday =  0;
+			pin1.filler_flag = 0;
 			break;
 		}
 	default:

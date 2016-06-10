@@ -17,7 +17,11 @@ class SLAC2016Cruncher {
   SLAC2016Cruncher(string &filename) {
 		strcpy(sfile,filename.c_str());
   };
-  ~SLAC2016Cruncher() {};
+
+  ~SLAC2016Cruncher() {
+	  //delete ntple;
+	  //delete tNTP;
+  };
   virtual void Loop();
   void initialize();
   void execute();
