@@ -100,11 +100,12 @@ private:
   TH1D *h1_pin1_ntimetrgbof;
   TH1D *h1_pin2_ntimetrgbof;
 
-  TH1D *h_pmt_adcval;
-  TH1D *h_pin1_adcval;
-  TH1D *h_pin2_adcval;
+  TH1D *h1_pmt_adcval;
+  TH1D *h1_pin1_adcval;
+  TH1D *h1_pin2_adcval;
 
   TH1D *h1_pin1Dpin2_adcval;
+  TH1D *h1_lsDam_adcval;
    
 };
 #endif

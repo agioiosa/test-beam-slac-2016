@@ -1,4 +1,4 @@
-Based on framework powered by Kim Siang Khaw (UW) (https://github.com/kimsiang/SLAC2016) and classes based on code of Stefano Mastroianni. Also thanks to Anna Driutti
+Based on framework powered by Kim Siang Khaw (UW) (https://github.com/kimsiang/SLAC2016) and classes based on code of Stefano Mastroianni. Also thanks to Anna Driutti and Alberto Luisiani
 
 To use this standalone C++/ROOT analysis framework created for SLAC 2016, simply git clone the whole repository:
 
