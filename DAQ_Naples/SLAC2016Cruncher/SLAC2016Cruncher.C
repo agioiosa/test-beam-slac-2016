@@ -21,7 +21,6 @@ void SLAC2016Cruncher::initialize(){
 	char tID[50]    = "ntMonFrame";		// tree ID
 	char tTitle[50] = "DAQ data";	// Tree title
 	ntple  = new TBmakeNTP(tID,tTitle);		// Create class
-	tNTP = ntple->NTPsetup();
 
 	cout << "initialize()" << endl;
 }
@@ -41,18 +40,16 @@ void SLAC2016Cruncher::execute(){
 			if (ErrorCode==0)
 			{
 				qq=fscanf(fpIN,"%x %x %x %x %x %x %x %x %x\n",&NBOF, &NTimeTrgBOF, &NtrgBOF, &FlagType, &boardTemp, &cspTemp, &extTemp, &Vbias, &ADCVal);
-				//printf("%x %x %x %x %x %x %x %x %x\n",NBOF, NTimeTrgBOF, NtrgBOF, FlagType, boardTemp, cspTemp, extTemp, Vbias, ADCVal);
 
 				BoardAdr= (FlagType&0x000F);
 				ChBoard=  (FlagType&0x00F0)>>4;
 				PulseType= (FlagType&0xFF00)>>8;
 
 				//fill ntuple
+				if (ChBoard==10 || ChBoard==11 || ChBoard==12)
 				ntple->NTPfill(ChBoard,NBOF,NTimeTrgBOF,NtrgBOF,BoardAdr,
 						boardTemp,cspTemp,extTemp,Vbias,ADCVal,PulseType,
 						t_year,t_mon,t_day,t_secday);	// Fill NTPle arrays
-
-				tNTP->Fill();
 			}
 			else
 			{
@@ -60,7 +57,7 @@ void SLAC2016Cruncher::execute(){
 				for (int ibyte=0;ibyte<frameloc;ibyte++)
 				{
 					qq=fscanf(fpIN,"%x ",&byteRD);
-					printf("loc %d byteRD %.2x \n",ibyte,byteRD);
+					//printf("loc %d byteRD %.2x \n",ibyte,byteRD);
 				}
 
 				qq=fscanf(fpIN,"\n");
@@ -85,11 +82,9 @@ void SLAC2016Cruncher::finalize(){
 	strcat(output_ROOT,sTemp);
 	TFile *hfile = new TFile(output_ROOT,"RECREATE");
 	hfile->cd();
-	tNTP->Write();
+	ntple->Write();
 	hfile->Close();
-	//usleep(1000);
 	delete hfile;
-
 	cout << "finalize()" << endl;
 }
 

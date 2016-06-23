@@ -1,4 +1,4 @@
-Based on framework powered by Kim Siang Khaw (UW) (https://github.com/kimsiang/SLAC2016) and classes of Stefano Mastroianni thanks also to Anna Driutti
+Based on framework powered by Kim Siang Khaw (UW) (https://github.com/kimsiang/SLAC2016) and classes of Stefano Mastroianni thanks also to Anna Driutti and Alberto Luisiani
 
 To use this standalone C++/ROOT cruncher framework created for SLAC 2016, simply git clone the whole repository:
 

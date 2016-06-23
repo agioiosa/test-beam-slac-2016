@@ -12,7 +12,6 @@ class TBmakeNTP{
 	// char tID[10] = "tNTP";
 	// char tTitle[50] = "Compressed NTPle";
 	// TBmakeNTP *A = new TBmakeNTP(tID,tTitle);
-	// TTree *t = A->NTPsetup();
 	// EventLoop:
 	//	A->NTPreset();
 	//	Ltime = LocalTime;
@@ -24,7 +23,6 @@ class TBmakeNTP{
 	//			A->NTPfill(nrun, ch, Np, charge, ampl, time, Ltime);
 	//		PulseNrLoop end
 	//	ChannelLoop end
-	//	t->Fill();
 	// EventLoop end
 	// f->cd();
 	// t->Write();
@@ -46,12 +44,16 @@ private:
 		Int_t t_mon;
 		Int_t t_day;
 		Int_t t_secday;
-		Int_t filler_flag;
+		Int_t fired;
 	} DEVICE;
 
 	char* ftID;					// Tree identifier
 	char* ftTitle;				// Tree description
 	DEVICE pmt, pin1, pin2;
+	TTree *tNTP;
+	TBranch* b10;
+	TBranch* b11;
+	TBranch* b12;
 
 public:
 	//
@@ -64,7 +66,7 @@ public:
 
 	//
 	// Configure NTPle tree structure
-	TTree *NTPsetup();
+	void NTPsetup();
 
 	//
 	// Pulse counter reset.
@@ -77,6 +79,9 @@ public:
 			Int_t BoardAdr, Int_t boardTemp, Int_t cspTemp, Int_t extTemp,
 			Int_t Vbias, Int_t ADCVal, Int_t PulseType, Int_t t_year, Int_t t_mon,
 			Int_t t_day, Int_t t_secday);
+
+	//write tNTP
+	void Write();
 };
 
 #endif

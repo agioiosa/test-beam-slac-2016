@@ -29,14 +29,29 @@ class SLAC2016Cruncher {
   void clear();
 
  private:
-  	int  NtrgBOF, NBOF, BoardAdr, ChBoard, PulseType, NTimeTrgBOF, FlagType;
-  	int  boardTemp, cspTemp, extTemp, Vbias, ADCVal;
-  	int t_year, t_mon, t_day, t_secday;
-  	int ErrorCode, frameloc;
-    int byteRD;
+  	Int_t NtrgBOF;
+  	Int_t NBOF;
+  	Int_t BoardAdr;
+  	Int_t ChBoard;
+  	Int_t PulseType;
+  	Int_t NTimeTrgBOF;
+  	Int_t FlagType;
+
+  	Int_t boardTemp;
+  	Int_t cspTemp;
+  	Int_t extTemp;
+  	Int_t Vbias;
+  	Int_t ADCVal;
+  	Int_t t_year;
+  	Int_t t_mon;
+  	Int_t t_day;
+  	Int_t t_secday;
+
+  	Int_t ErrorCode;
+  	Int_t frameloc;
+  	Int_t byteRD;
     char sfile[200];
 
 	TBmakeNTP *ntple;
-	TTree *tNTP;
 };
 #endif

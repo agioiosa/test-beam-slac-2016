@@ -65,7 +65,6 @@ int main (int argc, char **argv) {
         cout <<"###################################################################"<< endl;
 
         crunch.Loop();
-        crunch.~SLAC2016Cruncher();
     }
 
     return 0;
